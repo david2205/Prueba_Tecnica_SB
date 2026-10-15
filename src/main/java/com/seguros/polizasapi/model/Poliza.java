@@ -9,10 +9,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -21,10 +17,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "polizas")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class Poliza {
 
     @Id
@@ -47,4 +39,109 @@ public class Poliza {
 
     @OneToMany(mappedBy = "poliza", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Riesgo> riesgos = new ArrayList<>();
+
+    public Poliza() {
+    }
+
+    public Poliza(Long id, TipoPoliza tipo, EstadoPoliza estado, String numeroPoliza, LocalDate fechaInicioVigencia, LocalDate fechaFinVigencia, Integer mesesVigencia, BigDecimal canonMensual, BigDecimal prima, BigDecimal ipcAplicado, List<Riesgo> riesgos) {
+        this.id = id;
+        this.tipo = tipo;
+        this.estado = estado;
+        this.numeroPoliza = numeroPoliza;
+        this.fechaInicioVigencia = fechaInicioVigencia;
+        this.fechaFinVigencia = fechaFinVigencia;
+        this.mesesVigencia = mesesVigencia;
+        this.canonMensual = canonMensual;
+        this.prima = prima;
+        this.ipcAplicado = ipcAplicado;
+        this.riesgos = riesgos;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public TipoPoliza getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoPoliza tipo) {
+        this.tipo = tipo;
+    }
+
+    public EstadoPoliza getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EstadoPoliza estado) {
+        this.estado = estado;
+    }
+
+    public String getNumeroPoliza() {
+        return numeroPoliza;
+    }
+
+    public void setNumeroPoliza(String numeroPoliza) {
+        this.numeroPoliza = numeroPoliza;
+    }
+
+    public LocalDate getFechaInicioVigencia() {
+        return fechaInicioVigencia;
+    }
+
+    public void setFechaInicioVigencia(LocalDate fechaInicioVigencia) {
+        this.fechaInicioVigencia = fechaInicioVigencia;
+    }
+
+    public LocalDate getFechaFinVigencia() {
+        return fechaFinVigencia;
+    }
+
+    public void setFechaFinVigencia(LocalDate fechaFinVigencia) {
+        this.fechaFinVigencia = fechaFinVigencia;
+    }
+
+    public Integer getMesesVigencia() {
+        return mesesVigencia;
+    }
+
+    public void setMesesVigencia(Integer mesesVigencia) {
+        this.mesesVigencia = mesesVigencia;
+    }
+
+    public BigDecimal getCanonMensual() {
+        return canonMensual;
+    }
+
+    public void setCanonMensual(BigDecimal canonMensual) {
+        this.canonMensual = canonMensual;
+    }
+
+    public BigDecimal getPrima() {
+        return prima;
+    }
+
+    public void setPrima(BigDecimal prima) {
+        this.prima = prima;
+    }
+
+    public BigDecimal getIpcAplicado() {
+        return ipcAplicado;
+    }
+
+    public void setIpcAplicado(BigDecimal ipcAplicado) {
+        this.ipcAplicado = ipcAplicado;
+    }
+
+    public List<Riesgo> getRiesgos() {
+        return riesgos;
+    }
+
+    public void setRiesgos(List<Riesgo> riesgos) {
+        this.riesgos = riesgos;
+    }
 }
